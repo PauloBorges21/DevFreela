@@ -32,5 +32,34 @@ namespace DevFreela.API.Controllers
             return CreatedAtAction(nameof(GetById), new { id = 1 }, model); // CreatedAtAction posso consultar no GetById e passar o id para buscar e retornar o objeto
         }
 
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, UpdateProjectInputModel model)
+        {
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            return NoContent();
+        }
+
+        [HttpPut("{id}/start")]
+        public IActionResult Start(int id)
+        {
+            return NoContent();
+        }
+
+        [HttpPut("{id}/complete")]
+        public IActionResult Complete(int id)
+        {
+            return NoContent();
+        }
+        [HttpPost("{id}/comments")]
+        public IActionResult PostComment(int id, CreateProjectCommetInputModel model)
+        {
+            return CreatedAtAction(nameof(GetById), new { id = 1 }, model); // CreatedAtAction posso consultar no GetById e passar o id para buscar e retornar o objeto
+        } 
+
     }
 }
