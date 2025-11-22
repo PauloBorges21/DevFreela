@@ -1,4 +1,8 @@
 
+using DevFreela.API.ExceptionHandler;
+using DevFreela.API.Models;
+using DevFreela.API.Services;
+
 namespace DevFreela.API
 {
     public class Program
@@ -8,6 +12,15 @@ namespace DevFreela.API
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.Configure<FreelanceTotalCostConfig>(
+                builder.Configuration.GetSection("FreelanceTotalCostConfig")
+                );
+
+            builder.Services.AddScoped<IConfigService, ConfigService>();
+
+            builder.Services.AddExceptionHandler<ApiExceptionHandler>();
+            builder.Services.AddProblemDetails();
+
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -23,6 +36,7 @@ namespace DevFreela.API
                 app.UseSwaggerUI();
             }
 
+            app.UseExceptionHandler();
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
