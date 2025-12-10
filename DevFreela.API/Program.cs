@@ -2,6 +2,7 @@
 using DevFreela.API.ExceptionHandler;
 using DevFreela.API.Models;
 using DevFreela.API.Services;
+using DevFreela.Infrastructure.Persistence;
 
 namespace DevFreela.API
 {
@@ -21,6 +22,7 @@ namespace DevFreela.API
             builder.Services.AddExceptionHandler<ApiExceptionHandler>();
             builder.Services.AddProblemDetails();
 
+            builder.Services.AddSingleton<DevFreelaDbContext>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
