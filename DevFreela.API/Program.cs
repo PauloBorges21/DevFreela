@@ -2,6 +2,7 @@
 using DevFreela.API.ExceptionHandler;
 using DevFreela.API.Models;
 using DevFreela.API.Services;
+using DevFreela.Application.Extensions;
 using DevFreela.Infrastructure.Persistence;
 
 namespace DevFreela.API
@@ -18,7 +19,7 @@ namespace DevFreela.API
                 );
 
             builder.Services.AddScoped<IConfigService, ConfigService>();
-
+            builder.Services.AddApplication(builder.Configuration);
             builder.Services.AddExceptionHandler<ApiExceptionHandler>();
             builder.Services.AddProblemDetails();
 
